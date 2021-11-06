@@ -7,7 +7,7 @@ import PayerEntity from '../payer/entities/payers.entity';
 import BaseDAL from '../../bases/dal.base';
 
 @Injectable()
-export default class PointsDAL extends BaseDAL {
+export default class PayerPointsDAL extends BaseDAL {
     constructor(@InjectRepository(PayerPointsEntity) private payerPointsEntity: Repository<PayerPointsEntity>) {
         super();
     }

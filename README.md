@@ -1,24 +1,24 @@
 ## Description
 
 Fetch Reward Home Challenge implementation by David Shemian. </br>
-This is not production-ready product, but I did tried to make it an easy shift to production, if needed.</br>
-I used NestJS, which, IMO is a great server-side Node.js Typescript framework, that has some great tools for production usage.</br>
-My project is modeled by the Layer system, i.e. there are controllers, to handel the incoming requests, services to handel the business logic and DAL (Data Access Layer) which handles the DB access.</br>
+This is not production-ready product, but I did try to make it an easy shift to production, if needed.</br>
+I used NestJS, which, in my opinion is a great server-side Node.js Typescript framework, that has some great tools for production usage.</br>
+My project is modeled by the Layer system, i.e. there are controllers to handel the incoming requests, services to handel the business logic, and DAL (Data Access Layer) which handles the DB access.</br>
 For this project, I'm using sqlite3 as a simple-in memory SQL DB. </br>
-In case this project was to go to production, some of the things that I would think about doing are:
+In case this project was to go to production, here are some of the things I would think about doing:
 
 -   Use an environment configuration system, instead of hard coding the configurations as it is right now.
--   Use a production-suited, well indexed DB such as PostgreSQL or MySQL, or MongoDB if NoSQL is preferred (Which is a choice by itself, that depends on many things).
--   Added some more unit tests to the already existing e2e tests
+-   Use a production-suited, well indexed DB such as PostgreSQL, MySQL, or MongoDB
+-   Add some more unit tests to the already existing e2e tests
 -   Add some CI/CD tools such as Husky
 -   If needed, add an Auth system
--   Better error handling system, including custom made exception classes
--   Improve the Swagger interface which is not perfect right now.
+-   Improve error handling system, including custom made exception classes
+-   Improve the Swagger interface
 
 ## Assumptions
 
-Please note that I made the assumption that if a negative transactions request arrives </br>
-with timestamp earlier than all other positive transactions for the same payer, than the transaction is invalid. </br>
+Please note that I made the assumption that if a negative transaction request arrives </br>
+with timestamp earlier than any positive transactions of the same payer, then the negative transaction request is invalid. </br>
 For example, the sequence:
 
 ```bash

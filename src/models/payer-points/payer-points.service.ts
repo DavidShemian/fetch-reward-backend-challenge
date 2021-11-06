@@ -1,27 +1,27 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import BaseService from '../../bases/service.base';
 import PayerPointsEntity from './entities/payers-points.entity';
-import PointsDAL from './points.dal';
+import PayerPointsDAL from './payer-points.dal';
 import PayerEntity from '../payer/entities/payers.entity';
 import PayerPointsBalance from './types/payer-points-balance.class';
 import SpentReport from './types/spent-report.class';
 
 @Injectable()
-export default class PointsService extends BaseService {
-    constructor(private readonly pointsDAL: PointsDAL) {
+export default class PayerPointsService extends BaseService {
+    constructor(private readonly payerPointsDal: PayerPointsDAL) {
         super();
     }
 
     public async createPayerPoints(payer: PayerEntity, points: number, timestamp: string): Promise<PayerPointsEntity> {
-        return this.pointsDAL.createPayerPoints(new PayerPointsEntity(payer, points, timestamp));
+        return this.payerPointsDal.createPayerPoints(new PayerPointsEntity(payer, points, timestamp));
     }
 
     public async getPayerPointsUntilDate(id: string, to: string): Promise<PayerPointsEntity[]> {
-        return this.pointsDAL.getPayerPointsUntilDate(id, to);
+        return this.payerPointsDal.getPayerPointsUntilDate(id, to);
     }
 
     public async getPayersPointsBalance(): Promise<PayerPointsBalance> {
-        const pointsBalance = await this.pointsDAL.getPayersPointsBalance();
+        const pointsBalance = await this.payerPointsDal.getPayersPointsBalance();
 
         return pointsBalance.reduce((balance, { payer, points }) => {
             balance[payer] = points;
@@ -81,7 +81,7 @@ export default class PointsService extends BaseService {
      * @returns the updated payerPoints
      */
     public async spendPoints(pointsToSpend: number): Promise<SpentReport[]> {
-        const transactionsOrderedByTimestamps = await this.pointsDAL.getAllPayerPointsSortedByTimestamp();
+        const transactionsOrderedByTimestamps = await this.payerPointsDal.getAllPayerPointsSortedByTimestamp();
         const updatedPayerPoints = [];
         const pointsDelta: Record<string, number> = {};
 
@@ -125,6 +125,6 @@ export default class PointsService extends BaseService {
     }
 
     private async updatePayerPoints(payerPoints: PayerPointsEntity[]): Promise<PayerPointsEntity[]> {
-        return this.pointsDAL.updatePayerPoints(payerPoints);
+        return this.payerPointsDal.updatePayerPoints(payerPoints);
     }
 }

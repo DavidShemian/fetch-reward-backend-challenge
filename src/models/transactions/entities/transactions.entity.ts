@@ -10,7 +10,7 @@ export default class TransactionEntity extends BaseEntity {
     @IsString()
     public payer?: string;
 
-    @ManyToOne(() => PayerEntity)
+    @ManyToOne(() => PayerEntity, { nullable: false })
     public payerEntity!: PayerEntity;
 
     @ApiProperty()

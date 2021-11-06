@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import PayerModule from '../payer/payer.module';
-import PointsModule from '../points/points.module';
+import PointsModule from '../payer-points/payer-points.module';
 import TransactionEntity from './entities/transactions.entity';
 import TransactionDAL from './transaction.dal';
 import TransactionsController from './transactions.controller';

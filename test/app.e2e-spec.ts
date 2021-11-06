@@ -59,7 +59,7 @@ describe('Points (e2e)', () => {
             .get('/points')
             .expect(200)
             .expect({
-                message: 'Successfully got payers points balance',
+                message: 'Successfully returned points balance',
                 data: {
                     DANNON: 1000,
                     UNILEVER: 0,
@@ -84,7 +84,7 @@ describe('Points (e2e)', () => {
             .get('/points')
             .expect(200)
             .expect({
-                message: 'Successfully got payers points balance',
+                message: 'Successfully returned points balance',
                 data: {
                     DANNON: 500,
                     UNILEVER: 500,
@@ -109,7 +109,7 @@ describe('Points (e2e)', () => {
             .get('/points')
             .expect(200)
             .expect({
-                message: 'Successfully got payers points balance',
+                message: 'Successfully returned points balance',
                 data: {
                     DANNON: 0,
                     UNILEVER: 400,
@@ -172,7 +172,7 @@ describe('Points (e2e)', () => {
             .get('/points')
             .expect(200)
             .expect({
-                message: 'Successfully got payers points balance',
+                message: 'Successfully returned points balance',
                 data: {
                     DANNON: 100,
                 },
@@ -222,16 +222,6 @@ describe('Points (e2e)', () => {
         await request(app.getHttpServer())
             .post('/transactions')
             .send({ payer: 'DANNON', points: 200, timestamp: '2020-13-02T14:00:00Z' })
-            .expect(400)
-            .expect({
-                statusCode: 400,
-                message: ['timestamp must be a valid ISO 8601 date string'],
-                error: 'Bad Request',
-            });
-
-        await request(app.getHttpServer())
-            .post('/transactions')
-            .send({ payer: 'DANNON', points: 200, timestamp: '2020' })
             .expect(400)
             .expect({
                 statusCode: 400,

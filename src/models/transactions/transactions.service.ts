@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import PointsService from '../points/points.service';
+import PayerPointsService from '../payer-points/payer-points.service';
 import PayerService from '../payer/payer.service';
 import TransactionDAL from './transaction.dal';
 import TransactionEntity from './entities/transactions.entity';
@@ -9,7 +9,7 @@ import BaseService from '../../bases/service.base';
 export default class TransactionsService extends BaseService {
     constructor(
         private readonly payerService: PayerService,
-        private readonly pointsService: PointsService,
+        private readonly payerPointsService: PayerPointsService,
         private readonly transactionDAL: TransactionDAL
     ) {
         super();
@@ -37,9 +37,9 @@ export default class TransactionsService extends BaseService {
         }
 
         if (points < 0) {
-            await this.pointsService.reducePointsFromPayerPoints(points, payerFromDB.id, transaction.timestamp);
+            await this.payerPointsService.reducePointsFromPayerPoints(points, payerFromDB.id, transaction.timestamp);
         } else {
-            await this.pointsService.createPayerPoints(payerFromDB, points, timestamp);
+            await this.payerPointsService.createPayerPoints(payerFromDB, points, timestamp);
         }
 
         return this.transactionDAL.createTransaction({
