@@ -1,0 +1,53 @@
+{
+    "compilerOptions": {
+        "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
+        "declaration": true,
+        "removeComments": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2017",
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "strictBindCallApply": false,
+        "noFallthroughCasesInSwitch": false,
+
+        /* Basic Options */
+        "allowJs": true /* Allow javascript files to be compiled. */,
+        "checkJs": true /* Report errors in .js files. */,
+        "declarationMap": false /* Generates a sourcemap for each corresponding '.d.ts' file. */,
+        "downlevelIteration": true /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */,
+
+        /* Strict Type-Checking Options */
+        "strict": true /* Enable all strict type-checking options. */,
+        "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+        "strictNullChecks": true /* Enable strict null checks. */,
+        "strictFunctionTypes": true /* Enable strict checking of function types. */,
+        "strictPropertyInitialization": true /* Enable strict checking of property initialization in classes. */,
+        "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
+        "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
+
+        /* 
+            No checking for unused locals and parameters in order to compile project without them
+            The build function has the --noUnusedLocals  --noUnusedParameters for the project to no be able to build without it
+        */
+        // "noUnusedLocals": true /* Report errors on unused locals. */,
+        // "noUnusedParameters": true /* Report errors on unused parameters. */,
+
+        /* Module Resolution Options */
+        "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+        "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+
+        /* Source Map Options */
+        "inlineSourceMap": true /* Emit a single file with source maps instead of having a separate file. */,
+
+        /* Experimental Options */
+        "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
+        "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
+
+        /* Advanced Options */
+        "skipLibCheck": true /* Skip type checking of declaration files. */,
+        "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+
+        "resolveJsonModule": true
+    }
+}

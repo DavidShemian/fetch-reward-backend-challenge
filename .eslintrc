@@ -1,0 +1,75 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint", "prettier"],
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    "rules": {
+        "@typescript-eslint/member-ordering": [
+            "error",
+            {
+                "default": {
+                    "order": "alphabetically",
+                    "memberTypes": [
+                        "public-static-field",
+                        "public-instance-field",
+                        "protected-static-field",
+                        "protected-instance-field",
+                        "private-static-field",
+                        "private-instance-field",
+
+                        "public-constructor",
+
+                        "public-static-method",
+                        "protected-static-method",
+
+                        "public-instance-method",
+                        "protected-instance-method",
+
+                        "private-static-method",
+                        "private-instance-method"
+                    ]
+                }
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+        "max-len": [
+            "warn",
+            {
+                "code": 150
+            }
+        ],
+        "newline-before-return": "error",
+        "object-literal-sort-keys": "off",
+        "no-console": "error",
+        "prettier/prettier": "error",
+        "class-methods-use-this": "off",
+        "no-trailing-spaces": "off",
+        "no-multiple-empty-lines": "off",
+        "func-style": ["error", "expression"],
+        "prefer-arrow-callback": "error",
+        "no-var": "error",
+        "no-underscore-dangle": "off",
+        "no-return-await": "off",
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            },
+            // Forces blank line before return statement
+            {
+                "blankLine": "always",
+                "prev": "block-like",
+                "next": "*"
+            }
+            // Forces blank line after block statement
+        ]
+    }
+}
