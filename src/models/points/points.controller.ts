@@ -18,7 +18,7 @@ export default class PointsController extends BaseController {
     public async getAllPayersPointsBalance(): Promise<ISuccessfulResponse<PayerPointsBalance>> {
         const result = await this.pointsService.getPayersPointsBalance();
 
-        return this.responseSuccess('Successfully got payers points balance', result);
+        return this.responseSuccess('Successfully returned points balance', result);
     }
 
     @Post('spend')

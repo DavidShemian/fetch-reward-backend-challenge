@@ -228,6 +228,16 @@ describe('Points (e2e)', () => {
                 message: ['timestamp must be a valid ISO 8601 date string'],
                 error: 'Bad Request',
             });
+
+        await request(app.getHttpServer())
+            .post('/transactions')
+            .send({ payer: 'DANNON', points: 200, timestamp: '2020' })
+            .expect(400)
+            .expect({
+                statusCode: 400,
+                message: ['timestamp must be a valid ISO 8601 date string'],
+                error: 'Bad Request',
+            });
     });
 
     it('Should fail when trying to reduce points from new payer', async () => {

@@ -13,9 +13,9 @@ export default class TransactionsController extends BaseController {
 
     @Post()
     @ApiProperty({ type: TransactionEntity })
-    public async addTransaction(@Body() transaction: TransactionEntity): Promise<ISuccessfulResponse<TransactionEntity>> {
-        const result = await this.transactionsService.createTransaction(transaction);
+    public async addTransaction(@Body() transaction: TransactionEntity): Promise<ISuccessfulResponse<undefined>> {
+        await this.transactionsService.createTransaction(transaction);
 
-        return this.responseSuccess('Successfully added new transactions', result);
+        return this.responseSuccess('Successfully added new transactions');
     }
 }

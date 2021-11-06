@@ -19,7 +19,7 @@ export default class TransactionEntity extends BaseEntity {
     public points!: number;
 
     @ApiProperty()
-    @IsDateString()
+    @IsDateString({ strict: true })
     @Column()
     public timestamp!: string;
 }
