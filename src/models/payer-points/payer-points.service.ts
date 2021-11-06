@@ -117,6 +117,10 @@ export default class PayerPointsService extends BaseService {
 
         await this.updatePayerPoints(updatedPayerPoints);
 
+        return this.getSpentReport(pointsDelta);
+    }
+
+    private getSpentReport(pointsDelta: Record<string, number>): SpentReport[] {
         return Object.keys(pointsDelta).reduce((result, name) => {
             result.push(new SpentReport(name, pointsDelta[name]));
 
